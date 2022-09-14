@@ -10,28 +10,48 @@
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
     <!-- External CSS -->
     <link rel="stylesheet" href="reset.css" type="text/css">
     <link rel="stylesheet" href="normalize.css" type="text/css">
     <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-    <section>
-    <h1>Morning stretches</h1>
-    <p>Select a muscle</p>
+    <header class="primary-header container clearfix">
+        <h1 class="logo"><a href="index.html">Trainer <br> Treats</a></h1>
+        <a href="https://github.com/boobeh123/Trainer-Treats" class="float-right"><i class="fa-brands fa-github fa-2xl"></i></a>
+    </header>
+    <div class="row-alt">
+    <section class="container hero lead">
+        <h2>Dedicated to carry the boats and the logs</h2>
+        <p>Pick a stretch, log a workout, discuss with other folks.</p>
         <select>
             <option value="" selected>Show more</option>
         </select>
     </section>
-    <section>
-        <h3>Name: <span class="stretchName"></span></h3>
-        <h3>Muscle: <span class="stretchMuscle"></span></h3>
-        <h3>Difficulty: <span class="stretchDifficulty"></span></h3>
-        <h3>Instructions: <span class="stretchDirections"></span></h3>
-        <img src="#" alt="Exercise description">
-    </section>
-    <footer>
+    </div>
+    <div class="row">
+        <div class="grid">
+            <section class="onethird-column teaser">
+                <h5>Name:</h5>
+                <h3 class="stretchName"></h3>
+                <p class="alsoKnownAs"></p>
+            </section><!--
+        --><section class="onethird-column teaser">
+                <h5>Muscle:</h5>
+                <h3 class="stretchMuscle"></h3>
+                <p class="alsoStretches"></p>
+                <img src="#" />
+            </section><!--
+            --><section class="onethird-column teaser">
+                <h5>Directions:</h5>
+                <h3 class="stretchDirections"></h3></a>
+                <p></p>
+            </section><!--
+        --></div>
+    </div>
+    <footer class="container clearfix primary-footer">
+        <p>&copy; Trainer Treats</p>
         <p>*The content on this website have not been evaluated by the Food and Drug Administration. This is not intended to diagnose, treat, cure or prevent any disease.</p>
 
         <p>**Always consult with a qualified healthcare professional before starting any exercise. The content on this website is for informational and educational purposes only. This website is not intended to be medical advice or to replace a qualified healthcare professional.</p>
