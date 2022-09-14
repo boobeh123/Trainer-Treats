@@ -34,29 +34,279 @@ body {
     height: 100vh;
 }
 /**************************************************************
-* Main
+* Custom styles
 ***************************************************************/
-h1, p, h3 {
+body {
+    background: #293f50;
+    color: #999;
+    font-family: 'Roboto', 'Times New Roman', sans-serif;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    /* border: 2px solid red; */
+} 
+
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 250px;
+}
+
+/**************************************************************
+* Grid
+***************************************************************/
+*, 
+*:before,
+*:after {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.container, 
+.grid {
+    margin: 0 auto;
+    width: 60em;
+    /* border: 2px solid red; */
+}
+
+.container {
+    padding: 0 1.9rem;
+    /* border: 2px solid red; */
+}
+
+.grid,
+.onethird-column,
+.twothird-column {
+    padding: 0 1rem;
+    /* border: 2px solid red; */
+
+}
+
+.onethird-column, 
+.twothird-column {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.onethird-column {
+    width: 33.3333%;
+}
+
+.twothird-column {
+    width: 66.6666%;
+}   
+
+/**************************************************************
+* Rows
+***************************************************************/
+.row {
+    background-color: #fff;
+    min-width: 60em;
+    padding: 4.15rem 0 2.5rem 0;
+    /* border: 2px solid red; */
+}
+
+.row-alt {
+    min-width: 60em;
+    padding: 2.5rem 0 1.25rem 0;
+    background: #cbe2c1;
+    background: -webkit-linear-gradient(to right, #a1d3b0, #f6f1d3);
+    background: -moz-linear-gradient(to right, #a1d3b0, #f6f1d3);
+    background: linear-gradient(to right, #a1d3b0, #f6f1d3);
+}
+
+/**************************************************************
+* Clearfix
+***************************************************************/
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    clear: both;
+    *zoom: 1;
+}
+/**************************************************************
+* Typography
+***************************************************************/
+strong {
+    font-weight: 700;
+}
+cite, em {
+    font-style: italic;
+}
+h1, h3, h4, h5, p {
+    margin-bottom: 1.4rem;
+    /* border: 2px solid red; */
+}
+h1, h2, h3, h4 {
+    color: #648880;
+}
+h1 {
+    font-size: 2.3rem;
+    line-height: 2.75rem;
+    /* border: 2px solid red; */
+}
+h2 {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+    /* border: 2px solid red; */
+}
+h3 {
+    font-size: 1.3rem;
+    /* border: 2px solid red; */
+}
+h4 {
+    font-size: 18px;
+    /* border: 2px solid red; */
+}
+h5 {
+    color: #648880;
+    font-size: .8rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    /* border: 2px solid red; */
+}
+/**************************************************************
+* Leads
+***************************************************************/
+.lead {
+    text-align: center;
+}
+.lead p {
+    font-size: 1.5rem;
+    line-height: 33px;
+    color: #648880;
+}
+/**************************************************************
+* Links
+***************************************************************/
+a {
+    text-decoration: none;
+    color: #a9b2b9;
+}
+
+a:hover {
+    color: #648880;
+}
+
+.teaser a:hover h3 {
+    color: #999
+}
+
+.fa-github:hover {
+    color: black;
+}
+
+.fa-twitter:hover {
+    color: dodgerblue;
+}
+/**************************************************************
+* Buttons
+***************************************************************/
+.btn {
+    display: inline-block;
+    border-radius: 5px;
+    margin: 0;
+    color: #fff;
+    letter-spacing: .5px;
+}
+
+.btn-alt {
+    border: 1px solid #fff;
+    padding: .65rem 1.9rem;
+}
+
+.btn-alt:hover {
+    background-color: #fff;
+    color: #648880;
+}
+
+/* Another button added in our services - cascade  */
+/**************************************************************
+* Header
+***************************************************************/
+.logo {
+    font-family: 'Lato';
+    float: left;
+    border-top: 4px solid #648880;
+    font-weight: 100;
+    text-transform: uppercase;
+    padding: 2.5rem 0 1.3rem 0;
+    letter-spacing: .5px;
+    /* border: 2px solid red; */
+}
+
+.float-right {
+    margin: 4.15rem 0 1.4rem 0;
+    text-align: right;
+    float: right;
+
+}
+
+.primary-header a,
+.primary-footer a {
+    color: #fff;
+}
+
+.primary-header a:hover,
+.primary-footer a:hover {
+    color: #648880;
+}
+
+
+/**************************************************************
+* Footer
+***************************************************************/
+.primary-footer {
+    color: #648880;
+    font-size: 0.9rem;
+    padding: 2.75rem 0;
+    /* border: 2px solid red; */
+}
+
+.primary-footer > p {
+    float: left;
+    font-weight: 400;
+    /* border: 2px solid rebeccapurple; */
+}
+/**************************************************************
+* Main / HOME
+***************************************************************/
+
+.hero {
+    line-height: 2.75rem;
+    padding: 1.4rem 5rem 4.15rem 5rem;
+    text-align: center;
+    color: #fff;
+    /* border: 2px solid red; */
+}
+
+.hero p {
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+
+.info-main {
+    margin-bottom: 2.75rem;
+}
+
+.info-card {
+    border: 1px solid #dfe2e5;
+    border-radius: 5px;
+    margin-top: 5.5rem;
     text-align: center;
 }
 
-select, img {
+.teaser img {
+    /* border: 2px solid red; */
     display: block;
-    margin: 0 auto;
-}
-
-img {
-    max-width: 350px;
-}
-
-span {
-    display: block;
-}
-
-h3 {
-    font-weight: bold;
-}
-
-span {
-    font-weight: 300;
+    max-width: 100%;
+    height: 15rem;
+    border-radius: 5px;
+    margin-bottom: 1.4rem;
 }
