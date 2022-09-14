@@ -37,7 +37,7 @@ async function makeFetch(string) {
 
         document.querySelector('.stretchName').textContent = data.name;
         document.querySelector('.stretchMuscle').textContent = data.muscle;
-        document.querySelector('.stretchDifficulty').textContent = data.difficulty;
+        // document.querySelector('.stretchDifficulty').textContent = data.difficulty;
         document.querySelector('.stretchDirections').textContent = data.instructions;
     } 
     catch(error) {
