@@ -25,47 +25,24 @@
 }
 
 body {
-    font-family: Roboto, sans-serif;
-    font-size: 16px;
-    line-height: 22px;
-    text-shadow: 1px 1px 2px rgba(0,0,0, .5);
-    color: black;
-    background: linear-gradient(plum, orange);
-    height: 100vh;
-}
-/**************************************************************
-* Custom styles
-***************************************************************/
-body {
-    background: #293f50;
-    color: #999;
     font-family: 'Roboto', 'Times New Roman', sans-serif;
     font-size: 1rem;
     line-height: 1.4rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0, .5);
+    color: #999;
+    background: #293f50;
+    height: 100vh;
     /* border: 2px solid red; */
 } 
-
-img {
-    display: block;
-    margin: 0 auto;
-    max-width: 250px;
-}
 
 /**************************************************************
 * Grid
 ***************************************************************/
-*, 
-*:before,
-*:after {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-}
 
 .container, 
 .grid {
     margin: 0 auto;
-    width: 60em;
+    width: 60rem;
     /* border: 2px solid red; */
 }
 
@@ -101,13 +78,13 @@ img {
 ***************************************************************/
 .row {
     background-color: #fff;
-    min-width: 60em;
+    min-width: 60rem;
     padding: 4.15rem 0 2.5rem 0;
     /* border: 2px solid red; */
 }
 
 .row-alt {
-    min-width: 60em;
+    min-width: 60rem;
     padding: 2.5rem 0 1.25rem 0;
     background: #cbe2c1;
     background: -webkit-linear-gradient(to right, #a1d3b0, #f6f1d3);
@@ -115,21 +92,6 @@ img {
     background: linear-gradient(to right, #a1d3b0, #f6f1d3);
 }
 
-/**************************************************************
-* Clearfix
-***************************************************************/
-.clearfix:before,
-.clearfix:after {
-    content: "";
-    display: table;
-}
-.clearfix:after {
-    clear: both;
-}
-.clearfix {
-    clear: both;
-    *zoom: 1;
-}
 /**************************************************************
 * Typography
 ***************************************************************/
@@ -176,11 +138,13 @@ h5 {
 ***************************************************************/
 .lead {
     text-align: center;
+    /* border: 2px solid red; */
 }
 .lead p {
     font-size: 1.5rem;
     line-height: 33px;
     color: #648880;
+    /* border: 2px solid red; */
 }
 /**************************************************************
 * Links
@@ -193,22 +157,20 @@ a {
 a:hover {
     color: #648880;
 }
-
-.teaser a:hover h3 {
-    color: #999
+.fa-github {
+    color: #fefefe;
 }
-
 .fa-github:hover {
     color: black;
 }
 
-.fa-twitter:hover {
-    color: dodgerblue;
+.fa-github:active {
+    transform: translateY(-4.5px);
 }
 /**************************************************************
 * Buttons
 ***************************************************************/
-.btn {
+/* .btn {
     display: inline-block;
     border-radius: 5px;
     margin: 0;
@@ -224,9 +186,7 @@ a:hover {
 .btn-alt:hover {
     background-color: #fff;
     color: #648880;
-}
-
-/* Another button added in our services - cascade  */
+} */
 /**************************************************************
 * Header
 ***************************************************************/
@@ -238,25 +198,31 @@ a:hover {
     text-transform: uppercase;
     padding: 2.5rem 0 1.3rem 0;
     letter-spacing: .5px;
+    color: #a9b2b9;
+    margin-top: 0;
     /* border: 2px solid red; */
+}
+.logo:hover {
+    color: #648880;
 }
 
 .float-right {
     margin: 4.15rem 0 1.4rem 0;
     text-align: right;
     float: right;
-
 }
 
-.primary-header a,
+/* .primary-header a,
 .primary-footer a {
     color: #fff;
+    border: 2px solid red;
 }
 
 .primary-header a:hover,
 .primary-footer a:hover {
     color: #648880;
-}
+    border: 2px solid red;
+} */
 
 
 /**************************************************************
@@ -289,10 +255,14 @@ a:hover {
 .hero p {
     font-size: 1.5rem;
     font-weight: 100;
+    /* border: 2px solid red; */
+
 }
 
 .info-main {
     margin-bottom: 2.75rem;
+    /* border: 2px solid red; */
+
 }
 
 .info-card {
@@ -300,6 +270,8 @@ a:hover {
     border-radius: 5px;
     margin-top: 5.5rem;
     text-align: center;
+    /* border: 2px solid red; */
+
 }
 
 .teaser img {
