@@ -42,13 +42,17 @@ body {
 .container, 
 .grid {
     margin: 0 auto;
-    width: 60rem;
     /* border: 2px solid red; */
 }
 
 .container {
     padding: 0 1.9rem;
+    width: 75%;
     /* border: 2px solid red; */
+}
+
+.grid {
+    width: 50%;
 }
 
 .grid,
@@ -78,13 +82,14 @@ body {
 ***************************************************************/
 .row {
     background-color: #fff;
-    min-width: 60rem;
+    width: 100%;
     padding: 4.15rem 0 2.5rem 0;
     /* border: 2px solid red; */
 }
 
 .row-alt {
-    min-width: 60rem;
+    /* border: 2px solid red; */
+    width: 100%;
     padding: 2.5rem 0 1.25rem 0;
     background: #cbe2c1;
     background: -webkit-linear-gradient(to right, #a1d3b0, #f6f1d3);
@@ -277,8 +282,138 @@ a:hover {
 .teaser img {
     /* border: 2px solid red; */
     display: block;
-    max-width: 100%;
-    height: 15rem;
+    width: 100%;
     border-radius: 5px;
     margin-bottom: 1.4rem;
 }
+
+/**************************************************************
+* Media queries
+***************************************************************/
+
+@media screen and (max-device-width: 1440px) {
+          /* header */
+          .container {
+            width: 65%;
+        }
+    
+        /* div/row */
+        .row > .grid {
+            width: 80%;
+        }
+        .onethird-column {
+            width: 33.3333%;
+        }
+        .onethird-column h5 {
+            margin: 0;
+        }
+
+        /* footer */
+        footer p {
+            font-size: 1rem;
+        }
+
+
+  }
+
+@media screen and (max-device-width: 1024px) {
+        /* header */
+        .container {
+            width: 75%;
+        }
+    
+        /* div/row */
+        .row > .grid {
+            width: 80%;
+        }
+        .onethird-column {
+            width: 33.3333%;
+        }
+        .onethird-column h5 {
+            margin: 0;
+        }
+
+        /* footer */
+        footer p {
+            font-size: 1rem;
+        }
+  
+  }
+  
+  @media screen and (max-device-width: 768px) {
+        /* header */
+        .container {
+            width: 85%;
+        }
+    
+        /* div/row */
+        .row > .grid {
+            width: 80%;
+        }
+        .onethird-column {
+            display: block;
+            width: 100%;
+        }
+        .onethird-column * {
+            text-align: center;
+        }
+        .onethird-column h5 {
+            margin: 0;
+        }
+
+        /* footer */
+        footer p {
+            font-size: 1.25rem;
+
+        }
+
+  }
+  
+  @media screen and (max-device-width: 565px) {
+    /* header */
+    header {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .logo {
+        margin: 0 0 1rem 0;
+        padding: 1rem 0 1rem 0;
+        text-align: center;
+    }
+    .float-right {
+        text-align: center;
+        margin: 1rem 0 1rem 0;
+    }
+
+    /* section */
+    .row-alt {
+        padding: 0;
+        margin: 0;
+    }
+    .hero {
+        padding: 1rem 0 1rem 0;
+    }
+    section h2 {
+        font-size: 1.5rem;   
+    }
+    .hero p {
+        font-size: 1.1rem;
+        margin: 0;
+    }
+
+    /* div/row */
+    .row > .grid {
+        width: 100%;
+    }
+    .onethird-column {
+        display: block;
+        width: 100%;
+    }
+    .onethird-column * {
+        text-align: center;
+    }
+    .onethird-column h5 {
+        margin: 0;
+    }
+
+  }
