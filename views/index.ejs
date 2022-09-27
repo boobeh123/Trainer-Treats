@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morning Stretches</title>
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/9f91d488b5.js" crossorigin="anonymous"></script>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <link rel="stylesheet" href="css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+    <header class="primary-header container clearfix">
+        <h1 class="logo">Trainer <br> Treats</h1>
+        <a href="https://github.com/boobeh123/Trainer-Treats" class="float-right"><i class="fa-brands fa-github fa-2xl"></i></a>
+    </header>
+    <div class="row-alt">
+    <section class="container hero lead">
+        <h2>Dedicated to carry the boats and the logs</h2>
+        <p>Pick a stretch, log a workout, discuss with other folks.</p>
+    </section>
+    </div>
+    <div class="row">
+        <div class="grid">
+            <h1>Stretches: </h1>
+            <ul class="todoItems">
+            <% for(let i=0; i < items.length; i++) {%>
+                <li class="item">
+                    <% if(items[i].completed === true) {%>
+                    <span class='completed'><%= items[i].name %></span>
+                <% }else{ %>
+                    <span><%= items[i].name %></span>
+                <% } %>
+                <span class='fa fa-trash'></span>
+                <span class='fas fa-check'></span>
+                <span class='fas fa-wrench'></span>
+                </li>
+            <% } %>
+            </ul>
+            <h2>Left to do: <%= left %></h2>
+            <h2>Add A Stretch:</h2>
+            <form action="/addStretch" method="POST">
+                <input type="text" placeholder="In development" name="todoItem" disabled>
+                <input type="submit" disabled>
+            </form>
+        </div>
+    </div>
+    <footer class="container clearfix primary-footer">
+        <p>&copy; Trainer Treats</p>
+        <p>*The content on this website have not been evaluated by the Food and Drug Administration. This is not intended to diagnose, treat, cure or prevent any disease.</p>
+
+        <p>**Always consult with a qualified healthcare professional before starting any exercise. The content on this website is for informational and educational purposes only. This website is not intended to be medical advice or to replace a qualified healthcare professional.</p>
+    </footer>
+    <!-- <script type="text/javascript" src="js/main.js"></script> -->
+</body>
+</html>
