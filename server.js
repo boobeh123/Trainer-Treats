@@ -4,10 +4,10 @@ const cors = require('cors');
 const PORT = process.env.PORT || 8000;
 const MongoClient = require('mongodb').MongoClient
 require('dotenv').config()
-const mongoAtlasLogin = require('./.env/config.js');
+// const mongoAtlasLogin = require('./.env/config.js');
 
 let db,
-    dbConnectionStr = process.env.DB_STRING || mongoAtlasLogin.DB_STRING,
+    dbConnectionStr = process.env.DB_STRING,
     dbName = 'exercise';
 
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
