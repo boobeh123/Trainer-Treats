@@ -23,9 +23,10 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.get('/', async (request, response) => {
-    const todoItems = await db.collection('stretches').find().toArray()
-    const itemsLeft = await db.collection('stretches').countDocuments()
-    response.render('index.ejs', { items: todoItems, left: itemsLeft })
+    // const todoItems = await db.collection('stretches').find().toArray()
+    // const itemsLeft = await db.collection('stretches').countDocuments()
+    // response.render('index.ejs', { items: todoItems, left: itemsLeft })
+    response.sendFile('index.html')
     // db.collection('todos').find().toArray()
     // .then(data => {
     //     db.collection('todos').countDocuments({completed: false})
