@@ -2,7 +2,46 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const PORT = process.env.PORT || 8000;
+const MongoClient = require('mongodb').MongoClient
+require('dotenv').config()
+const mongoAtlasLogin = require('./.env/config.js');
 
+let db,
+    dbConnectionStr = process.env.DB_STRING || mongoAtlasLogin.DB_STRING,
+    dbName = 'exercise';
+
+MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
+    .then(client => {
+        console.log(`Connected to ${dbName} Database`)
+        db = client.db(dbName)
+    })
+
+app.set('view engine', 'ejs')
+app.use(cors());
+app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
+app.get('/', async (request, response) => {
+    const todoItems = await db.collection('stretches').find().toArray()
+    const itemsLeft = await db.collection('stretches').countDocuments()
+    response.render('index.ejs', { items: todoItems, left: itemsLeft })
+    // db.collection('todos').find().toArray()
+    // .then(data => {
+    //     db.collection('todos').countDocuments({completed: false})
+    //     .then(itemsLeft => {
+    //         response.render('index.ejs', { items: data, left: itemsLeft })
+    //     })
+    // })
+    // .catch(error => console.error(error))
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running on port: ${PORT}`);
+});
+
+
+/*
 const stretches = {
     'neck': {
         'name': 'Side Neck Stretch',
@@ -100,8 +139,6 @@ const stretches = {
     }
 }
 
-app.use(cors());
-app.use(express.static(__dirname + '/public'));
 app.get('/', (request,response) => {
     response.sendFile(__dirname + '/index.html');
 });
@@ -117,6 +154,4 @@ app.get('/api/:name', (request, response) => {
         response.json(stretches.unknown);
     }
 })
-app.listen(PORT, () => {
-    console.log(`Server running on port: ${PORT}`);
-});
+*/
