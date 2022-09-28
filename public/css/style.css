@@ -282,7 +282,6 @@ a:hover {
 .content {
     background: #F9F8F8;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-    /* max-width: 65%; */
     width: 95%;
     height: 30rem;
     margin: 0 auto;
@@ -290,7 +289,8 @@ a:hover {
     text-align: center;
 }
 
-.content-p {
+.content > p {
+    /* border: 2px solid red; */
     font-size: 2rem;
     line-height: 44px;
     font-weight: 300;
@@ -302,7 +302,6 @@ a:hover {
 
 .content button {
     border-radius: 50%;
-    /* min-width: 25%; */
     width: 25%;
     height: 5rem;
     padding: 2rem 0;
@@ -320,37 +319,11 @@ a:hover {
 /**************************************************************
 * Modal
 ***************************************************************/
-
-  .hidden {
+.hidden {
     display: none;
-  }
+}
 
-  
-.modal {
-    position: fixed;
-    text-align: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    color: black;
-    background-color: #F9F8F8;;
-    padding: 4rem;
-    border-radius: 25px;
-    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
-    z-index: 10;
-    color: black;
-    font-weight: 300;
-    font-size: 1.6rem;
-    line-height: 139%;
-    letter-spacing: 0.02em;
-  }
-  
-  .surprise-image {
-    max-width: 50%;
-  }
-  
-  .overlay {
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -359,25 +332,45 @@ a:hover {
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(5px);
     z-index: 5;
-  }
+}
   
-  
-  .more-modal, .close-modal{
-    width: min(50%, 130px);
-    height: 50px;
-    box-shadow: 0px 4px 4px 2px #FFC0CB;
-    opacity: 0.9;
-    border-radius: 25px;
-    padding-top: 0;
-    color: black;
-    font-size: 1.2rem;
-    text-align: center;
-    margin: 0.6rem;
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: #F9F8F8;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    padding: 4rem;
+    border-radius: 2rem;
     font-weight: 300;
-    line-height: 169%;
-    letter-spacing: 0.02em;
-    font-family: "Akshar", sans-serif;
-  }
+    font-size: 1.6rem;
+    color: black;
+    z-index: 10;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+}
+    
+  .content .more-modal, 
+  .content .close-modal {
+      box-shadow: 0px 4px 4px 2px #999;
+      opacity: 0.75;
+      font-size: 1.2rem;
+      margin: 1rem;
+      font-weight: 300;
+      border-radius: 1rem;
+      width: 15%;
+      height: 5%;
+      padding: 1rem 0;
+      border: none;
+      background: none;
+}
+  
+.content .more-modal:hover, 
+.content .close-modal:hover {
+    background: linear-gradient(25deg,#a1d3b0 30%, #f6f1d3 70%);
+    opacity: 0.9;
+    cursor: pointer;
+}
 /**************************************************************
 * Media queries
 ***************************************************************/
@@ -397,6 +390,17 @@ a:hover {
         }
         .onethird-column h5 {
             margin: 0;
+        }
+
+        /* content */
+        .content button {
+            width: 15%;
+            height: 7rem;
+        }
+        
+        .content .more-modal,
+        .content .close-modal {
+            width: 25%;
         }
 
         /* footer */
@@ -450,6 +454,12 @@ a:hover {
         }
         .onethird-column h5 {
             margin: 0;
+        }
+
+        /* content */
+        .content .more-modal,
+        .content .close-modal {
+            width: 35%;
         }
 
         /* footer */
@@ -510,6 +520,16 @@ a:hover {
     /* content */
     .content {
         height: 35rem;
+    }
+    
+    .content button {
+        width: 25%;
+        height: 5rem;
+    }
+
+    .content .more-modal,
+    .content .close-modal {
+        width: 75%;
     }
 
   }
