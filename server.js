@@ -4,11 +4,17 @@ const cors = require('cors');
 const PORT = process.env.PORT || 8000;
 const MongoClient = require('mongodb').MongoClient
 require('dotenv').config()
-// const mongoAtlasLogin = require('./.env/config.js');
 
 let db,
-    dbConnectionStr = process.env.DB_STRING,
-    dbName = 'exercise';
+dbConnectionStr = process.env.DB_STRING,
+dbName = 'exercise';
+
+try {
+    const mongoAtlasLogin = require('./.env/config.js');
+    dbConnectionStr = mongoAtlasLogin.DB_STRING
+} catch(error) {
+    console.error(error)
+}
 
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
     .then(client => {
@@ -35,6 +41,22 @@ app.get('/', async (request, response) => {
     // })
     // .catch(error => console.error(error))
 });
+
+app.post('/addStretch', (request, response) => {
+    db.collection('stretches').insertOne(
+        {
+            name: request.body.stretchName, 
+            muscle: request.body.muscleRegion, 
+            difficulty: request.body.stretchDiff, 
+            instructions: request.body.stretchDir
+        })
+    .then(result => {
+        console.log('Stretch Added')
+        response.redirect('/')
+    })
+    // then/catch error handling.
+    .catch(error => console.error(error))
+})
 
 app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`);
