@@ -24,32 +24,107 @@
     <div class="row-alt">
     <section class="container hero lead">
         <h2>Dedicated to carry the boats and the logs</h2>
-        <p>Pick a stretch, log a workout, discuss with other folks.</p>
+        <p>See a stretch that isn't here? Add it so others may try it!</p>
+        <form action="/addStretch" method="POST">
+            <!-- <select>
+                <option selected>Muscle region</option>
+            </select> -->
+            <!-- <select>
+                <option selected>Stretch difficulty</option>
+            </select> -->
+            <input type="text" placeholder="Muscle region" name="muscleRegion">
+            <input type="text" placeholder="Stretch name" name="stretchName">
+            <input type="text" placeholder="Difficulty" name="stretchDiff">
+            <input type="text" placeholder="Directions" name="stretchDir">
+            <input type="submit">
+        </form>
+        <h2>Stretches currently in the database: <%= left %></h2>
     </section>
     </div>
     <div class="row">
         <div class="grid">
-            <h1>Stretches: </h1>
-            <ul class="todoItems">
-            <% for(let i=0; i < items.length; i++) {%>
-                <li class="item">
-                    <% if(items[i].completed === true) {%>
-                    <span class='completed'><%= items[i].name %></span>
-                <% }else{ %>
-                    <span><%= items[i].name %></span>
-                <% } %>
-                <span class='fa fa-trash'></span>
-                <span class='fas fa-check'></span>
-                <span class='fas fa-wrench'></span>
+            <section class="content">
+                <!-- <h4 class="secondaryTitle">Hi, Jesaca</h4> -->
+                <p class="content-p">WHAT WOULD YOU LIKE TO STRETCH TODAY?</p>
+                <li class="show-modal">
+                    <button class="neck">
+                        <i class="fas fa-dog fa-2xl"></i>
+                        <p>Neck</p>
+                    </button>
+                    <button>
+                        <i class="fas fa-cat fa-2xl"></i>
+                        <p>Chest</p>
+                    </button>
+                    <button>
+                        <i class="fas fa-fish fa-2xl"></i>
+                        <p>Shoulder</p>
+                    </button>
+                    <button>
+                        <i class="fas fa-dove fa-2xl"></i>
+                        <p>Triceps</p>
+                    </button>
+                    <button>
+                        <i class="fas fa-kiwi-bird fa-2xl"></i>
+                        <p>Lats</p>
+                    </button>
+                    <button>
+                        <i class="fas fa-crow fa-2xl"></i>
+                        <p>Abdominal</p>
+                    </button>
+                    <button>
+                        <i class="fas fa-horse fa-2xl"></i>
+                        <p>Lowerback</p>
+                    </button>
+                    <button>
+                        <i class="fas fa-hippo fa-2xl"></i>
+                        <p>Glutes</p> 
+                    </button>
+                    <button>
+                        <i class="fas fa-frog fa-2xl"></i>
+                        <p>Quadriceps</p> 
+                    </button>
+                    <button>
+                        <i class="fas fa-dragon fa-2xl"></i>
+                        <p>Hamstrings</p> 
+                    </button>
                 </li>
-            <% } %>
-            </ul>
-            <h2>Left to do: <%= left %></h2>
-            <h2>Add A Stretch:</h2>
-            <form action="/addStretch" method="POST">
-                <input type="text" placeholder="In development" name="todoItem" disabled>
-                <input type="submit" disabled>
-            </form>
+
+                <div class="modal hidden">
+                    <h3 class="title">Stretch:</h3>
+                    <p id="tipParagraph"></p>
+        
+                    <img
+                      class="surprise-image"
+                      src=""
+                      alt="Photo-of-stretch"
+                    />
+        
+                    <li class="flex-modal-btn">
+                      <div class="btn-break">
+                        <button class="more-modal">More!</button>
+                      </div>
+                      <div class="btn-break">
+                        <button class="close-modal">&times;</button>
+                      </div>
+                    </li>
+                  </div>
+        
+                  <div class="overlay hidden"></div>
+            </section>
+            <!-- <h1>Stretches: </h1> -->
+            <!-- <ul class="todoItems"> -->
+            <!-- <% for(let i=0; i < items.length; i++) {%> -->
+                <!-- <li class="item"> -->
+                    <!-- <span>Region: <%= items[i].muscle %></span> -->
+                    <!-- <span class='fa fa-trash'></span> -->
+                    <!-- <span class='fas fa-check'></span> -->
+                    <!-- <span class='fas fa-wrench'></span> -->
+                    <!-- <p>Difficulty: <%= items[i].difficulty %></p> -->
+                    <!-- <p>Stretch name: <%= items[i].name %></p> -->
+                    <!-- <p>Stretch name: <%= items[i].instructions %></p> -->
+                <!-- </li> -->
+            <!-- <% } %> -->
+            <!-- </ul> -->
         </div>
     </div>
     <footer class="container clearfix primary-footer">
@@ -58,6 +133,6 @@
 
         <p>**Always consult with a qualified healthcare professional before starting any exercise. The content on this website is for informational and educational purposes only. This website is not intended to be medical advice or to replace a qualified healthcare professional.</p>
     </footer>
-    <!-- <script type="text/javascript" src="js/main.js"></script> -->
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
