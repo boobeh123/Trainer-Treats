@@ -5,65 +5,6 @@ const PORT = process.env.PORT || 8000;
 const MongoClient = require('mongodb').MongoClient
 require('dotenv').config()
 
-let db,
-dbConnectionStr = process.env.DB_STRING,
-dbName = 'exercise';
-
-try {
-    const mongoAtlasLogin = require('./.env/config.js');
-    dbConnectionStr = mongoAtlasLogin.DB_STRING
-} catch(error) {
-    console.error(error)
-}
-
-MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
-    .then(client => {
-        console.log(`Connected to ${dbName} Database`)
-        db = client.db(dbName)
-    })
-
-app.set('view engine', 'ejs')
-app.use(cors());
-app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
-
-app.get('/', async (request, response) => {
-    const todoItems = await db.collection('stretches').find().toArray()
-    const itemsLeft = await db.collection('stretches').countDocuments()
-    response.render('index.ejs', { items: todoItems, left: itemsLeft })
-    // db.collection('todos').find().toArray()
-    // .then(data => {
-    //     db.collection('todos').countDocuments({completed: false})
-    //     .then(itemsLeft => {
-    //         response.render('index.ejs', { items: data, left: itemsLeft })
-    //     })
-    // })
-    // .catch(error => console.error(error))
-});
-
-app.post('/addStretch', (request, response) => {
-    db.collection('stretches').insertOne(
-        {
-            name: request.body.stretchName, 
-            muscle: request.body.muscleRegion, 
-            difficulty: request.body.stretchDiff, 
-            instructions: request.body.stretchDir
-        })
-    .then(result => {
-        console.log('Stretch Added')
-        response.redirect('/')
-    })
-    // then/catch error handling.
-    .catch(error => console.error(error))
-})
-
-app.listen(PORT, () => {
-    console.log(`Server running on port: ${PORT}`);
-});
-
-
-/*
 const stretches = {
     'neck': {
         'name': 'Side Neck Stretch',
@@ -150,19 +91,45 @@ const stretches = {
         'instructions': [`Starting position: Stand up straight, place your feet hip-width apart, straighten your legs and do not lock them.`, `Bend at the waist and let your upper body hang down in front of you.`]
     },
     'unknown': {
-        'name': 'unknown',
-        'muscle': 'unknown',
+        'name': 'Try again - Resubmit button',
+        'muscle': 'Try again - Resubmit button',
         'type': 'unknown',
         'equipment': 'unknown',
-        'difficulty': 'unknown',
-        'instructions': 'unknown',
+        'difficulty': 'Try again - Resubmit button',
+        'instructions': 'Try again - Resubmit button',
         'summary': `unknown`,
         'benefits': `unknown`
     }
 }
 
-app.get('/', (request,response) => {
-    response.sendFile(__dirname + '/index.html');
+
+let db,
+dbConnectionStr = process.env.DB_STRING,
+dbName = 'exercise';
+
+try {
+    const mongoAtlasLogin = require('./.env/config.js');
+    dbConnectionStr = mongoAtlasLogin.DB_STRING
+} catch(error) {
+    console.error(error)
+}
+
+MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
+    .then(client => {
+        console.log(`Connected to ${dbName} Database`)
+        db = client.db(dbName)
+})
+
+app.set('view engine', 'ejs')
+app.use(cors());
+app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
+app.get('/', async (request,response) => {
+    const todoItems = await db.collection('stretches').find().sort({likes:-1}).toArray()
+    const itemsLeft = await db.collection('stretches').countDocuments()
+    response.render('index.ejs', { items: todoItems, left: itemsLeft })
 });
 app.get('/api/', (request, response) => {
     response.json(stretches);
@@ -176,4 +143,54 @@ app.get('/api/:name', (request, response) => {
         response.json(stretches.unknown);
     }
 })
-*/
+
+app.put('/addUpvote', (request, response) => {
+    db.collection('stretches').findOneAndUpdate({name: request.body.name, likes: request.body.likes}, {
+        $set: {
+            likes: request.body.likes + 1
+          }
+    },{
+        sort: {_id: -1},
+        upsert: true
+    })
+    .then(result => {
+        console.log('Added One Like')
+        response.json('Like Added')
+    })
+    .catch(error => console.error(error))
+})
+
+// app.get('/', async (request, response) => {
+    // const todoItems = await db.collection('stretches').find().toArray()
+    // const itemsLeft = await db.collection('stretches').countDocuments()
+    // response.render('index.ejs', { items: todoItems, left: itemsLeft })
+    // db.collection('todos').find().toArray()
+    // .then(data => {
+    //     db.collection('todos').countDocuments({completed: false})
+    //     .then(itemsLeft => {
+    //         response.render('index.ejs', { items: data, left: itemsLeft })
+    //     })
+    // })
+    // .catch(error => console.error(error))
+// });
+
+// app.post('/addStretch', (request, response) => {
+//     db.collection('stretches').insertOne(
+//         {
+//             name: request.body.stretchName, 
+//             muscle: request.body.muscleRegion, 
+//             difficulty: request.body.stretchDiff, 
+//             instructions: request.body.stretchDir,
+//             likes: 0
+//         })
+//     .then(result => {
+//         console.log('Stretch Added')
+//         response.redirect('/')
+//     })
+//     .catch(error => console.error(error))
+// })
+
+app.listen(PORT, () => {
+    console.log(`Server running on port: ${PORT}`);
+});
+
