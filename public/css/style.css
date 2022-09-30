@@ -222,7 +222,6 @@ a:hover {
 }
 
 .primary-footer > p {
-    float: left;
     font-weight: 400;
     /* border: 2px solid rebeccapurple; */
 }
@@ -273,6 +272,18 @@ a:hover {
     display: block;
     margin: .25rem auto;
     text-align: center;
+}
+/**************************************************************
+* Side content
+***************************************************************/
+.side-content {
+    border: 2px solid #648880;
+    background-color: #293f50;
+    position: absolute;
+    top: 26.5rem;
+    height: 25rem;
+    width: 20%;
+
 }
 
 /**************************************************************
@@ -371,6 +382,12 @@ a:hover {
     opacity: 0.9;
     cursor: pointer;
 }
+
+.modal img {
+    /* border: 2px solid red; */
+    max-width: 35%;
+    max-height: 35%;
+}
 /**************************************************************
 * Media queries
 ***************************************************************/
@@ -403,6 +420,12 @@ a:hover {
             width: 25%;
         }
 
+    /* side-content */
+    .side-content {
+        width: 13%;
+        height: 30rem;
+    }
+
         /* footer */
         footer p {
             font-size: 1rem;
@@ -427,6 +450,17 @@ a:hover {
         .onethird-column h5 {
             margin: 0;
         }
+
+    /* side-content */
+    .side-content {
+        position: static;
+        width: 100%;
+        background-color: #fefefe;
+        border-left: 0;
+        border-right: 0;
+        text-align: center;
+        height: 20rem;
+    }
 
         /* footer */
         footer p {
