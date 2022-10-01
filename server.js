@@ -174,21 +174,21 @@ app.put('/addUpvote', (request, response) => {
     // .catch(error => console.error(error))
 // });
 
-// app.post('/addStretch', (request, response) => {
-//     db.collection('stretches').insertOne(
-//         {
-//             name: request.body.stretchName, 
-//             muscle: request.body.muscleRegion, 
-//             difficulty: request.body.stretchDiff, 
-//             instructions: request.body.stretchDir,
-//             likes: 0
-//         })
-//     .then(result => {
-//         console.log('Stretch Added')
-//         response.redirect('/')
-//     })
-//     .catch(error => console.error(error))
-// })
+app.post('/addStretch', (request, response) => {
+    db.collection('stretches').insertOne(
+        {
+            name: request.body.stretchName, 
+            muscle: request.body.muscleRegion, 
+            difficulty: request.body.stretchDiff, 
+            instructions: request.body.stretchDir,
+            likes: 0
+        })
+    .then(result => {
+        console.log('Stretch Added')
+        response.redirect('/')
+    })
+    .catch(error => console.error(error))
+})
 
 app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`);
