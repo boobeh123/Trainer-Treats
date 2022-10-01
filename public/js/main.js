@@ -1,3 +1,19 @@
+// First fetch call to display object-properties as <option> elements
+fetch(`/api/`)
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        const muscleNames = Object.keys(data);
+
+        for (let i = 0; i < muscleNames.length; i++) {
+            const optionTags = document.createElement('option');
+            optionTags.innerText = muscleNames[i];
+            optionTags.value = muscleNames[i];
+            document.querySelector('select').appendChild(optionTags);
+        }
+  })
+
 // Modal & Interactables
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
