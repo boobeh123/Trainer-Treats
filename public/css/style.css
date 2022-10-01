@@ -97,6 +97,16 @@ body {
     background: linear-gradient(to right, #a1d3b0, #f6f1d3);
 }
 
+.row-alt-2 {
+    /* border: 2px solid red; */
+    width: 100%;
+    padding: 2.5rem 0 1.25rem 0;
+    background: #cbe2c1;
+    background: -webkit-linear-gradient(to bottom, #a1d3b0, #f6f1d3);
+    background: -moz-linear-gradient(to bottom, #a1d3b0, #f6f1d3);
+    background: linear-gradient(-170deg, #a1d3b0, #f6f1d3);
+}
+
 /**************************************************************
 * Typography
 ***************************************************************/
@@ -274,18 +284,31 @@ a:hover {
     text-align: center;
 }
 /**************************************************************
-* Side content
+* CRUD area
 ***************************************************************/
-.side-content {
-    border: 2px solid #648880;
-    background-color: #293f50;
-    position: absolute;
-    top: 26.5rem;
-    height: 25rem;
-    width: 20%;
-
+.row-alt-2 {
+    color: #fefefe;
+    text-align: center;
 }
 
+.row-alt-2 form {
+    /* border: 2px solid red; */
+    float: right;
+    line-height: 2rem;
+}
+
+.row-alt-2 label {
+    display: block;
+    text-align: center;
+}
+
+.row-alt-2 input, 
+.row-alt-2 select,
+.row-alt-2 textarea {
+    /* border: 2px solid yellow; */
+    display: block;
+    width: 90%;
+}
 /**************************************************************
 * Section
 ***************************************************************/
@@ -420,11 +443,7 @@ a:hover {
             width: 25%;
         }
 
-    /* side-content */
-    .side-content {
-        width: 13%;
-        height: 30rem;
-    }
+
 
         /* footer */
         footer p {
@@ -451,16 +470,6 @@ a:hover {
             margin: 0;
         }
 
-    /* side-content */
-    .side-content {
-        position: static;
-        width: 100%;
-        background-color: #fefefe;
-        border-left: 0;
-        border-right: 0;
-        text-align: center;
-        height: 20rem;
-    }
 
         /* footer */
         footer p {
@@ -495,6 +504,16 @@ a:hover {
         .content .close-modal {
             width: 35%;
         }
+
+        /* CRUD Area */
+        .row-alt-2 input, 
+        .row-alt-2 select,
+        .row-alt-2 textarea {
+            display: block;
+            margin: 0 auto;
+            width: 30%;
+            float: none;
+}
 
         /* footer */
         footer p {
@@ -565,5 +584,12 @@ a:hover {
     .content .close-modal {
         width: 75%;
     }
+
+        /* CRUD Area */
+        .row-alt-2 input, 
+        .row-alt-2 select,
+        .row-alt-2 textarea {
+            width: 90%;
+}
 
   }
