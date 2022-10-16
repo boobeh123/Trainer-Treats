@@ -1,3 +1,6 @@
+## IN (FURTHER) DEVELOPMENT
+Previous functionalities may be down for maintenance.
+
 ## Description
 A full stack web application to learn about stretches. This application has its own API & is connected to a database that contains information & instructions about stretching. 
 
