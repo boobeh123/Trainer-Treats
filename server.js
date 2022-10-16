@@ -1,9 +1,12 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const PORT = process.env.PORT || 8000;
-const MongoClient = require('mongodb').MongoClient
-require('dotenv').config()
+const connectDB = require('./config/database')
+const apiRoutes = require('./routes/api')
+
+require('dotenv').config({path: './config/.env'})
+
+connectDB()
 
 const stretches = {
     'neck': {
@@ -102,64 +105,50 @@ const stretches = {
     }
 }
 
-
-let db,
-dbConnectionStr = process.env.DB_STRING,
-dbName = 'exercise';
-
-try {
-    const mongoAtlasLogin = require('./.env/config.js');
-    dbConnectionStr = mongoAtlasLogin.DB_STRING
-} catch(error) {
-    console.error(error)
-}
-
-MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
-    .then(client => {
-        console.log(`Connected to ${dbName} Database`)
-        db = client.db(dbName)
-})
-
 app.set('view engine', 'ejs')
 app.use(cors());
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.get('/', async (request,response) => {
-    const todoItems = await db.collection('stretches').find().sort({likes:-1}).toArray()
-    const itemsLeft = await db.collection('stretches').countDocuments()
-    response.render('index.ejs', { items: todoItems, left: itemsLeft })
-});
-app.get('/api/', (request, response) => {
-    response.json(stretches);
-})
-app.get('/api/:name', (request, response) => {
-    const muscleName = request.params.name.toLowerCase();
-    console.log(request.params.name);
-    if (stretches[muscleName]) {
-        response.json(stretches[muscleName]);
-    } else {
-        response.json(stretches.unknown);
-    }
-})
+app.use('/', apiRoutes)
 
-app.put('/addUpvote', (request, response) => {
-    db.collection('stretches').findOneAndUpdate({name: request.body.name, likes: request.body.likes}, {
-        $set: {
-            likes: request.body.likes + 1
-          }
-    },{
-        sort: {_id: -1},
-        upsert: true
-    })
-    .then(result => {
-        console.log('Added One Like')
-        response.json('Like Added')
-    })
-    .catch(error => console.error(error))
-})
+// app.get('/', async (request,response) => {
+    // const todoItems = await db.collection('stretches').find().sort({likes:-1}).toArray()
+    // const itemsLeft = await db.collection('stretches').countDocuments()
+    // response.render('index.ejs', { items: todoItems, left: itemsLeft })
+//     response.render('index.ejs');
+// });
+// app.get('/api/', (request, response) => {
+//     response.json(stretches);
+// })
+// app.get('/api/:name', (request, response) => {
+//     const muscleName = request.params.name.toLowerCase();
+//     console.log(request.params.name);
+//     if (stretches[muscleName]) {
+//         response.json(stretches[muscleName]);
+//     } else {
+//         response.json(stretches.unknown);
+//     }
+// })
 
+// app.put('/addUpvote', (request, response) => {
+//     db.collection('stretches').findOneAndUpdate({name: request.body.name, likes: request.body.likes}, {
+//         $set: {
+//             likes: request.body.likes + 1
+//           }
+//     },{
+//         sort: {_id: -1},
+//         upsert: true
+//     })
+//     .then(result => {
+//         console.log('Added One Like')
+//         response.json('Like Added')
+//     })
+//     .catch(error => console.error(error))
+// })
+
+// originally commented out
 // app.get('/', async (request, response) => {
     // const todoItems = await db.collection('stretches').find().toArray()
     // const itemsLeft = await db.collection('stretches').countDocuments()
@@ -173,24 +162,25 @@ app.put('/addUpvote', (request, response) => {
     // })
     // .catch(error => console.error(error))
 // });
+// originally commented out
 
-app.post('/addStretch', (request, response) => {
-    db.collection('stretches').insertOne(
-        {
-            name: request.body.stretchName, 
-            muscle: request.body.muscleRegion, 
-            difficulty: request.body.stretchDiff, 
-            instructions: request.body.stretchDir,
-            likes: 0
-        })
-    .then(result => {
-        console.log('Stretch Added')
-        response.redirect('/')
-    })
-    .catch(error => console.error(error))
-})
+// app.post('/addStretch', (request, response) => {
+//     db.collection('stretches').insertOne(
+//         {
+//             name: request.body.stretchName, 
+//             muscle: request.body.muscleRegion, 
+//             difficulty: request.body.stretchDiff, 
+//             instructions: request.body.stretchDir,
+//             likes: 0
+//         })
+//     .then(result => {
+//         console.log('Stretch Added')
+//         response.redirect('/')
+//     })
+//     .catch(error => console.error(error))
+// })
 
-app.listen(PORT, () => {
-    console.log(`Server running on port: ${PORT}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server running on port: ${process.env.PORT}`);
 });
 

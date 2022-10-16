@@ -94,7 +94,7 @@
         </div>
     </div>
     <div class="row-alt-2 clearfix">
-        <form class="onethird-column" action="/addStretch" method="POST">
+        <!-- <form class="onethird-column" action="/addStretch" method="POST">
             <fieldset class="info-group">
                 <label>
                     Region
@@ -120,29 +120,25 @@
                 </label>
                 <input type="submit" name="submit" value="Submit">
             </fieldset>
-        </form>
-            <h3>Stretches currently in the database: <%= left %></h3>
-            <ul class="todoItems">
-            <% for(let i=0; i < items.length; i++) {%>
-                <li class="item">
-                    <span><%= items[i].name %></span>
-                    <span class='fa fa-thumbs-up'></span>
-                    <span><%= items[i].likes %></span>
-                </li>
-            <% } %>
-            <!-- <form action="/addStretch" method="POST">
-                <select>
-                    <option selected>Muscle region</option>
-                </select>
-                <select>
-                    <option selected>Stretch difficulty</option>
-                </select>
-                <input type="text" placeholder="Muscle region" name="muscleRegion">
-                <input type="text" placeholder="Stretch name" name="stretchName">
-                <input type="text" placeholder="Difficulty" name="stretchDiff">
-                <input type="text" placeholder="Directions" name="stretchDir">
+        </form> -->
+        <h3>Stretches currently in the database: <%= left %></h3>
+        <ul class="todoItems">
+        <% for(let i=0; i < items.length; i++) {%>
+            <li class="item">
+                <span><%= items[i].name %></span>
+                <span class='fa fa-thumbs-up'></span>
+                <span><%= items[i].likes %></span>
+            </li>
+        <% } %>
+            <form action="/stretches" method="POST">
+                <input type="text" placeholder="name" name='name'>
+                <input type="text" placeholder="difficulty" name="difficulty">
+                <input type="text" placeholder="instructions" name="instructions">
+                <input type="text" placeholder="muscle" name="muscle">
+                <input type="text" placeholder="coverImg" name="coverImg">
+                <input type="text" placeholder="demoVideo" name="demoVideo">
                 <input type="submit">
-            </form> -->
+            </form>
             </ul>
     </div>
     <footer class="container clearfix primary-footer">
