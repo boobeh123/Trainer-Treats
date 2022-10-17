@@ -1,4 +1,5 @@
 const Stretch = require('../models/Stretches')
+const stretches = require('../stretches.json')
 
 module.exports = {
     getIndex: async (request, response) => {
@@ -29,4 +30,14 @@ module.exports = {
             console.error(error)
         }
     },
+    getStretch: async (request, response) => {
+        try {
+            response.json(stretches)
+        } catch(error) {
+            console.error(error)
+        }
+    },
+
+
+
 }
